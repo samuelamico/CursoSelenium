@@ -16,7 +16,7 @@ def find_by_href(browser,link):
         - browser: Instancia do browser
         - link: Link que será procurado   
     """
-    elementos = browser.find_elements_by_tag_value('a')
+    elementos = browser.find_elements_by_tag_name('a')
 
     for elemento in elementos:
         if link in elemento.get_attribute('href'):
@@ -26,5 +26,9 @@ lista_n_ordenada = browser.find_element_by_tag_name('ul') # 1
 
 lis = lista_n_ordenada.find_elements_by_tag_name('li') # 2
 
-lis[0].find_element_by_tag_name('a').text # 3
+print(lis[0].find_element_by_tag_name('a').text) # 3
 
+elm_ddg = find_by_href(browser,'ddg')
+print(f"elemento link  = {elm_ddg.get_attribute('href')}")
+
+browser.quit()
